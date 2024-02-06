@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walentynkowa strona</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .slide {
+    display: none;
+    text-align: center;
+  }
+  #result {
+    display: none;
+    margin-top: 20px;
+  }
+  .big-button {
+    font-size: 24px;
+    padding: 10px 20px;
+    margin: 10px;
+  }
+  #small-no-button {
+    font-size: 12px;
+    padding: 5px 10px;
+    margin: 5px;
+    width: 50px;
+    height: 30px;
+  }
+  #images-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 10px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+  #result-text {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+<div id="slide1" class="slide" style="display: block;">
+  <h2>Czy zostaniesz moją walentynką?</h2>
+  <button class="big-button" onclick="showResult('yes')">Tak</button>
+  <button class="big-button" onclick="showResult('no')">Nie</button>
+</div>
+<div id="slide2" class="slide">
+  <h1 id="result-text">Kocham cieeee</h1>
+  <div id="images-container">
+    <img src="obraz1.png" alt="Obraz 1" class="image">
+    <img src="obraz2.png" alt="Obraz 2" class="image">
+    <img src="obraz3.png" alt="Obraz 3" class="image">
+    <img src="obraz4.png" alt="Obraz 4" class="image">
+    <img src="obraz5.png" alt="Obraz 5" class="image">
+    <img src="obraz6.png" alt="Obraz 6" class="image">
+    <img src="obraz7.png" alt="Obraz 7" class="image">
+    <img src="obraz8.png" alt="Obraz 8" class="image">
+    <img src="obraz9.png" alt="Obraz 9" class="image">
+    <img src="obraz10.png" alt="Obraz 10" class="image">
+    <img src="obraz11.png" alt="Obraz 11" class="image">
+  </div>
+</div>
+<div id="slide3" class="slide">
+  <h1>Czy na pewno?</h1>
+  <button class="big-button" onclick="showResult('yes')">Tak</button>
+  <button id="small-no-button" onclick="showResult('no')">Nie</button>
+</div>
+
+<script>
+  let slideIndex = 1;
+
+  function showSlide(n) {
+    const slides = document.getElementsByClassName("slide");
+    if (n > slides.length) { slideIndex = 1; }
+    if (n < 1) { slideIndex = slides.length; }
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+  }
+
+  function showResult(answer) {
+    if (answer === 'yes') {
+      if (slideIndex === 1 || slideIndex === 3) {
+        slideIndex = 2; // Przejście do slajdu z "JEJ"
+        showSlide(slideIndex);
+      }
+    } else {
+      if (slideIndex === 1) {
+        slideIndex = 3; // Przejście do slajdu z "Czy na pewno?"
+        showSlide(slideIndex);
+      }
+    }
+  }
+
+  showSlide(slideIndex); // Wyświetlenie pierwszego slajdu po załadowaniu strony
+</script>
+</body>
+</html>
